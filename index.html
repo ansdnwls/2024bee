@@ -1,138 +1,103 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Set up the HTML structure
-    document.body.className = "bg-gray-50";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee Vocabulary Test 2024</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body>
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee Vocabulary Test 2024</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- 헤더 섹션 -->
+        <header class="bg-yellow-400 text-gray-800 p-4 shadow-lg">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-bold">🐝 Spelling Bee Vocabulary Test 2024</h1>
+                <p class="text-xl mt-2">신나게 단어공부해요! 🎉</p>
+                <p id="userStatus" class="mt-2 text-lg">Welcome to Spelling Bee!</p>
+                <button id="show-stats-button" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">
+                    View Statistics 📊
+                </button>
+            </div>
+        </header>
 
-    // Main container
-    const container = document.createElement("div");
-    container.className = "min-h-screen";
-    document.body.appendChild(container);
+        <!-- 메인 콘텐츠 -->
+        <main class="container mx-auto p-4">
+            <!-- 초기 설정 섹션 -->
+            <section id="initial-setup" class="mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center animate__animated animate__fadeIn">
+                    <h2 class="text-2xl font-semibold mb-4">Let's Start Learning! 🚀</h2>
+                    <button id="set-name-button" class="bg-yellow-500 text-white px-8 py-3 rounded-full hover:bg-yellow-600 transition transform hover:scale-105">
+                        Start with Voice Recognition 🎤
+                    </button>
+                </div>
+            </section>
 
-    // Header Section
-    const header = document.createElement("header");
-    header.className = "bg-yellow-400 text-gray-800 p-4 shadow-lg";
-    container.appendChild(header);
+            <!-- 학습 섹션 -->
+            <section id="learning-section" class="grid md:grid-cols-2 gap-4" style="display: none;">
+                <!-- 학습 카드 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Today's Words 📚</h2>
+                    <div id="word-display" class="mb-6 p-4 bg-yellow-50 rounded-lg">
+                        <div id="current-word" class="text-4xl font-bold text-yellow-600 mb-3">Word</div>
+                        <div id="current-meaning" class="text-2xl text-gray-600 mb-4">Meaning</div>
+                        <div id="current-sentence" class="text-lg text-gray-700 italic">"Example Sentence"</div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <button id="start-practice-button" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition transform hover:scale-105">
+                            Start Learning 🎯
+                        </button>
+                        <button id="repeat-word-button" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition transform hover:scale-105">
+                            Repeat Word 🔄
+                        </button>
+                    </div>
+                </div>
 
-    const headerContainer = document.createElement("div");
-    headerContainer.className = "container mx-auto text-center";
-    header.appendChild(headerContainer);
+                <!-- 진도 현황 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Your Progress 📈</h2>
+                    <div id="progress-display">
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600">Today's Progress</span>
+                                <span id="daily-progress-text" class="text-sm font-semibold">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div id="daily-progress-bar" class="bg-yellow-400 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600">Total Progress</span>
+                                <span id="total-progress-text" class="text-sm font-semibold">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div id="total-progress-bar" class="bg-green-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    const title = document.createElement("h1");
-    title.className = "text-4xl font-bold";
-    title.innerHTML = "🐝 Spelling Bee Vocabulary Test 2024";
-    headerContainer.appendChild(title);
+            <!-- 기타 섹션들... (생략) -->
 
-    const subTitle = document.createElement("p");
-    subTitle.className = "text-xl mt-2";
-    subTitle.innerHTML = "신나게 단어공부해요! 🎉";
-    headerContainer.appendChild(subTitle);
+        </main>
+    </div>
 
-    const userStatus = document.createElement("p");
-    userStatus.id = "userStatus";
-    userStatus.className = "mt-2 text-lg";
-    userStatus.innerText = "Welcome to Spelling Bee!";
-    headerContainer.appendChild(userStatus);
+    <!-- Chart.js 및 사용자 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="main.js"></script> <!-- 분리된 main.js 파일 불러오기 -->
+</body>
+</html>
 
-    const statsButton = document.createElement("button");
-    statsButton.id = "show-stats-button";
-    statsButton.className = "mt-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition";
-    statsButton.innerHTML = "View Statistics 📊";
-    headerContainer.appendChild(statsButton);
-
-    // Main Content
-    const main = document.createElement("main");
-    main.className = "container mx-auto p-4";
-    container.appendChild(main);
-
-    // Initial Setup Section
-    const initialSetup = document.createElement("section");
-    initialSetup.id = "initial-setup";
-    initialSetup.className = "mb-8";
-    main.appendChild(initialSetup);
-
-    const setupDiv = document.createElement("div");
-    setupDiv.className = "bg-white rounded-lg shadow-md p-6 text-center animate__animated animate__fadeIn";
-    initialSetup.appendChild(setupDiv);
-
-    const setupTitle = document.createElement("h2");
-    setupTitle.className = "text-2xl font-semibold mb-4";
-    setupTitle.innerText = "Let's Start Learning! 🚀";
-    setupDiv.appendChild(setupTitle);
-
-    const voiceButton = document.createElement("button");
-    voiceButton.id = "set-name-button";
-    voiceButton.className = "bg-yellow-500 text-white px-8 py-3 rounded-full hover:bg-yellow-600 transition transform hover:scale-105";
-    voiceButton.innerHTML = "Start with Voice Recognition 🎤";
-    setupDiv.appendChild(voiceButton);
-
-    // Learning Section
-    const learningSection = document.createElement("section");
-    learningSection.id = "learning-section";
-    learningSection.className = "grid md:grid-cols-2 gap-4";
-    learningSection.style.display = "none";
-    main.appendChild(learningSection);
-
-    const learningCard = document.createElement("div");
-    learningCard.className = "bg-white rounded-lg shadow-md p-6";
-    learningSection.appendChild(learningCard);
-
-    const cardTitle = document.createElement("h2");
-    cardTitle.className = "text-2xl font-semibold mb-4";
-    cardTitle.innerText = "Today's Words 📚";
-    learningCard.appendChild(cardTitle);
-
-    const wordDisplay = document.createElement("div");
-    wordDisplay.id = "word-display";
-    wordDisplay.className = "mb-6 p-4 bg-yellow-50 rounded-lg";
-    learningCard.appendChild(wordDisplay);
-
-    const currentWord = document.createElement("div");
-    currentWord.id = "current-word";
-    currentWord.className = "text-4xl font-bold text-yellow-600 mb-3";
-    currentWord.innerText = "Word";
-    wordDisplay.appendChild(currentWord);
-
-    const currentMeaning = document.createElement("div");
-    currentMeaning.id = "current-meaning";
-    currentMeaning.className = "text-2xl text-gray-600 mb-4";
-    currentMeaning.innerText = "Meaning";
-    wordDisplay.appendChild(currentMeaning);
-
-    const currentSentence = document.createElement("div");
-    currentSentence.id = "current-sentence";
-    currentSentence.className = "text-lg text-gray-700 italic";
-    currentSentence.innerText = "\"Example Sentence\"";
-    wordDisplay.appendChild(currentSentence);
-
-    const startPracticeButton = document.createElement("button");
-    startPracticeButton.id = "start-practice-button";
-    startPracticeButton.className = "bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition transform hover:scale-105";
-    startPracticeButton.innerHTML = "Start Learning 🎯";
-    learningCard.appendChild(startPracticeButton);
-
-    const repeatWordButton = document.createElement("button");
-    repeatWordButton.id = "repeat-word-button";
-    repeatWordButton.className = "bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition transform hover:scale-105";
-    repeatWordButton.innerHTML = "Repeat Word 🔄";
-    learningCard.appendChild(repeatWordButton);
-
-    // Progress Section
-    const progressCard = document.createElement("div");
-    progressCard.className = "bg-white rounded-lg shadow-md p-6";
-    learningSection.appendChild(progressCard);
-
-    const progressTitle = document.createElement("h2");
-    progressTitle.className = "text-2xl font-semibold mb-4";
-    progressTitle.innerText = "Your Progress 📈";
-    progressCard.appendChild(progressTitle);
-
-    // Add more sections if needed following the same structure...
-
-    // Include external scripts
-    const chartScript = document.createElement("script");
-    chartScript.src = "https://cdn.jsdelivr.net/npm/chart.js";
-    document.body.appendChild(chartScript);
-
-    const customScript = document.createElement("script");
-    customScript.src = "https://ansdnwls.github.io/2024bee/script.js";
-    document.body.appendChild(customScript);
-});
